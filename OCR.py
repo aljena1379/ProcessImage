@@ -7,4 +7,4 @@
     # print(result)
 def RunTesseractBatch():
     import subprocess
-    subprocess.run([r"\RunTesseract.bat"])
+    subprocess.run([r'RunTesseract.bat'])

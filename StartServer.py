@@ -1,8 +1,8 @@
-from bottle import route, run
-import OCR
+from bottle import route, run, error, view
+from OCR import RunTesseractBatch
 @route('/OCR')
 def index():
-    return "DONE!"
+    return RunTesseractBatch()
     # TODO: If needed, set RunTesseract to fill out lines in JSON.
     # jsonFile = {"pdf_name" : "pdf1", 
     #         "page" : [
@@ -20,8 +20,15 @@ def index():
     #             }}
     #         ]}
     # return jsonFile
-def initialize():
-    OCR.RunTesseractBatch()
+# def initialize():
+#     OCR.RunTesseractBatch()
+@route('/')
+@view('base')
+def basePage():
+    return dict()
+@error(404)
+def pageNotFound(err):
+    return "404 error -> You typed wrong address!"
 if (__name__ == "__main__"):
     # TODO: Error in calling initialize function
     # initialize()
