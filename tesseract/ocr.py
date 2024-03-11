@@ -1,3 +1,5 @@
+from StartServer import TESSERACT_COMMAND
+
 # TODO: Remove if RunTesseractBatch works.
 # import pytesseract
 # from PIL import Image
@@ -7,4 +9,4 @@
     # print(result)
 def RunTesseractBatch():
     import subprocess
-    subprocess.run([r"\RunTesseract.bat"])
+    subprocess.run([TESSERACT_COMMAND])
