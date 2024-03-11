@@ -1,5 +1,13 @@
 from bottle import route, run
-import OCR
+from dotenv import load_dotenv
+from tesseract import ocr
+import os
+
+
+load_dotenv()
+SERVER_ADDRESS = os.getenv('SERVER_ADDRESS')
+SERVER_PORT = os.getenv('SERVER_PORT')
+
 @route('/OCR')
 def index():
     return "DONE!"
@@ -21,8 +29,10 @@ def index():
     #         ]}
     # return jsonFile
 def initialize():
-    OCR.RunTesseractBatch()
+    ocr.RunTesseractBatch()
+
+
 if (__name__ == "__main__"):
     # TODO: Error in calling initialize function
     # initialize()
-    run(host='localhost', port=8080)
+    run(host=SERVER_ADDRESS, port=SERVER_PORT)
