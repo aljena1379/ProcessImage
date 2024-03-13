@@ -1,5 +1,14 @@
-from bottle import route, run, error, view
-from OCR import RunTesseractBatch
+from bottle import route, run
+from dotenv import load_dotenv
+from tesseract import ocr
+import os
+
+
+load_dotenv()
+SERVER_ADDRESS = os.getenv('SERVER_ADDRESS')
+SERVER_PORT = os.getenv('SERVER_PORT')
+TESSERACT_COMMAND = os.getenv('TESSERACT_COMMAND')
+
 @route('/OCR')
 def index():
     return RunTesseractBatch()
@@ -20,16 +29,11 @@ def index():
     #             }}
     #         ]}
     # return jsonFile
-# def initialize():
-#     OCR.RunTesseractBatch()
-@route('/')
-@view('base')
-def basePage():
-    return dict()
-@error(404)
-def pageNotFound(err):
-    return "404 error -> You typed wrong address!"
+def initialize():
+    ocr.RunTesseractBatch()
+
+
 if (__name__ == "__main__"):
     # TODO: Error in calling initialize function
     # initialize()
-    run(host='localhost', port=8080)
+    run(host=SERVER_ADDRESS, port=SERVER_PORT)
