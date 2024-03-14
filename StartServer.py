@@ -34,6 +34,4 @@ def initialize():
 
 
 if (__name__ == "__main__"):
-    # TODO: Error in calling initialize function
-    # initialize()
     run(host=SERVER_ADDRESS, port=SERVER_PORT)
