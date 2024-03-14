@@ -8,6 +8,7 @@ load_dotenv()
 SERVER_ADDRESS = os.getenv('SERVER_ADDRESS')
 SERVER_PORT = os.getenv('SERVER_PORT')
 TESSERACT_COMMAND = os.getenv('TESSERACT_COMMAND')
+TESSERACT_TRAINEDDATA_PATH = os.getenv('TESSERACT_TRAINEDDATA_PATH')
 
 @route('/OCR')
 def index():
